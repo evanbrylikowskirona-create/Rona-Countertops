@@ -13,8 +13,9 @@
   </h3>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div>
-      <label class="block text-sm font-medium text-slate-700 mb-1">Customer Name</label>
+      <label for="customer-name" class="block text-sm font-medium text-slate-700 mb-1">Customer Name</label>
       <input
+        id="customer-name"
         type="text"
         placeholder="Enter customer name"
         value={$quoteStore.customerInfo.name}
@@ -23,8 +24,9 @@
       />
     </div>
     <div>
-      <label class="block text-sm font-medium text-slate-700 mb-1">Phone Number</label>
+      <label for="customer-phone" class="block text-sm font-medium text-slate-700 mb-1">Phone Number</label>
       <input
+        id="customer-phone"
         type="tel"
         placeholder="(705) 555-0100"
         value={$quoteStore.customerInfo.phone}
@@ -33,8 +35,9 @@
       />
     </div>
     <div>
-      <label class="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
+      <label for="customer-email" class="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
       <input
+        id="customer-email"
         type="email"
         placeholder="customer@example.com"
         value={$quoteStore.customerInfo.email}
@@ -43,8 +46,9 @@
       />
     </div>
     <div>
-      <label class="block text-sm font-medium text-slate-700 mb-1">Address</label>
+      <label for="customer-address" class="block text-sm font-medium text-slate-700 mb-1">Address</label>
       <input
+        id="customer-address"
         type="text"
         placeholder="123 Main St"
         value={$quoteStore.customerInfo.address}

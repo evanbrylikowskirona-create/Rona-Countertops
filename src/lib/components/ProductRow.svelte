@@ -16,6 +16,10 @@
 
   $: productKeys = Object.keys($settingsStore.pricingData);
 
+  // local state for the select
+  let selectedProfile: ProfileType = product.profile || 'vanity';
+
+  
 </script>
 
 <div class="bg-white border border-slate-200 rounded-lg p-3 space-y-3">
@@ -34,10 +38,10 @@
   </div>
 
   <div class="grid grid-cols-2 gap-2 sm:grid-cols-4">
-    <!-- Product line -->
     <div class="col-span-2 sm:col-span-1">
-      <label class="block text-xs font-medium text-slate-600 mb-1">Product Line</label>
+      <label for="product-line-{product.id}" class="block text-xs font-medium text-slate-600 mb-1">Product Line</label>
       <select
+        id="product-line-{product.id}"
         value={product.productKey}
         on:change={(e) => change({ productKey: e.currentTarget.value })}
         class="w-full px-2 py-1.5 text-sm border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-900"
@@ -48,10 +52,10 @@
       </select>
     </div>
 
-    <!-- Finish grade -->
     <div>
-      <label class="block text-xs font-medium text-slate-600 mb-1">Finish Grade</label>
+      <label for="grade-{product.id}" class="block text-xs font-medium text-slate-600 mb-1">Finish Grade</label>
       <select
+        id="grade-{product.id}"
         value={product.grade}
         on:change={(e) => change({ grade: e.currentTarget.value as FinishGrade })}
         class="w-full px-2 py-1.5 text-sm border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-900"
@@ -62,10 +66,10 @@
       </select>
     </div>
 
-    <!-- Profile -->
     <div>
-      <label class="block text-xs font-medium text-slate-600 mb-1">Profile</label>
+      <label for="profile-{product.id}" class="block text-xs font-medium text-slate-600 mb-1">Profile</label>
       <select
+        id="profile-{product.id}"
         value={product.profile}
         on:change={(e) => change({ profile: e.currentTarget.value as ProfileType })}
         class="w-full px-2 py-1.5 text-sm border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-900"
@@ -76,10 +80,10 @@
       </select>
     </div>
 
-    <!-- Quantity -->
     <div>
-      <label class="block text-xs font-medium text-slate-600 mb-1">Linear Feet</label>
+      <label for="qty-{product.id}" class="block text-xs font-medium text-slate-600 mb-1">Linear Feet</label>
       <input
+        id="qty-{product.id}"
         type="number"
         min="1"
         value={product.quantity}

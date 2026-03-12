@@ -55,7 +55,6 @@
       }
     });
 
-    // Consolidation pass
     let changed = true;
     let iter = 0;
     const MAX_ITER = result.length * result.length + 10;
@@ -88,7 +87,7 @@
       const first = q.products[0];
       const updated = first
         ? { ...first, quantity: totalFt }
-        : { id: 1, productKey: '2300_2700_Nova', grade: 'regular' as const, profile: 'bar36' as const, quantity: totalFt };
+        : { id: 1, productKey: '2300_2700_Nova', grade: 'regular' as const, profile: 'vanity' as const, quantity: totalFt };
       return { ...q, products: [updated] };
     });
 
@@ -106,7 +105,6 @@
 
 <div class="max-w-2xl mx-auto space-y-4">
 
-  <!-- Header card -->
   <div class="bg-slate-600 text-white px-5 py-4 rounded-lg">
     <h1 class="text-xl font-semibold text-center">Cut List Optimizer</h1>
     <p class="text-slate-300 text-sm text-center mt-1">
@@ -114,7 +112,6 @@
     </p>
   </div>
 
-  <!-- Input card -->
   <div class="bg-white rounded-lg shadow-sm border border-slate-200 p-5 space-y-4">
     <div>
       <label for="cut-input" class="block text-sm font-semibold text-slate-700 mb-2">
@@ -136,7 +133,6 @@
       </div>
     </div>
 
-    <!-- Cut chips -->
     {#if cuts.length > 0}
       <div>
         <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">
@@ -148,7 +144,7 @@
               <span class="font-mono font-medium text-sm">{cut}"</span>
               <button
                 on:click={() => removeCut(i)}
-                aria-label="Remove cut"
+                aria-label="Remove {cut} inch cut"
                 class="text-slate-400 hover:text-red-500 transition-colors ml-2"
               >
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -162,7 +158,6 @@
       </div>
     {/if}
 
-    <!-- Actions -->
     <div class="flex gap-2 pt-1">
       <button
         on:click={optimize}
@@ -178,9 +173,7 @@
     </div>
   </div>
 
-  <!-- Results -->
   {#if hasResults}
-    <!-- Stats -->
     <div class="bg-white rounded-lg shadow-sm border border-slate-200 p-5 space-y-4">
       <div class="grid grid-cols-3 gap-4 text-center">
         <div>
@@ -209,7 +202,6 @@
         Send to Calculator
       </button>
 
-      <!-- Board diagrams -->
       <div class="space-y-4 pt-2">
         <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide">
           Cut Plan — {boards.length} board{boards.length !== 1 ? 's' : ''}
@@ -243,7 +235,6 @@
     </div>
 
   {:else if cuts.length === 0}
-    <!-- Empty state -->
     <div class="bg-white rounded-lg border-2 border-dashed border-slate-300 p-16 text-center text-slate-400">
       <svg class="w-12 h-12 mx-auto mb-3 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"

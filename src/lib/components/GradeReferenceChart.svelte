@@ -31,7 +31,6 @@
 </script>
 
 <div class="section no-print bg-slate-50 p-5 rounded-lg border border-slate-200">
-  <!-- Header toggle -->
   <button
     class="w-full text-left flex items-center justify-between text-base font-semibold text-slate-700 pb-2 border-b-2 border-slate-600 mb-4"
     on:click={() => (collapsed = !collapsed)}
@@ -41,11 +40,11 @@
   </button>
 
   {#if !collapsed}
-    <!-- Colour lookup -->
     <div class="bg-white border border-slate-200 rounded-lg p-3 mb-4">
-      <label class="block text-xs font-semibold text-slate-500 tracking-wider mb-2">Look Up Colour Code</label>
+      <label for="color-lookup" class="block text-xs font-semibold text-slate-500 tracking-wider mb-2">Look Up Colour Code</label>
       <div class="flex gap-2 items-center">
         <input
+          id="color-lookup"
           type="text"
           placeholder="e.g. 38, DI, FXNG, SDU…"
           bind:value={query}
@@ -53,7 +52,7 @@
           class="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-900"
         />
         {#if query}
-          <button on:click={clear} class="text-slate-400 hover:text-slate-600 text-xl leading-none px-1">×</button>
+          <button on:click={clear} aria-label="Clear" class="text-slate-400 hover:text-slate-600 text-xl leading-none px-1">×</button>
         {/if}
       </div>
       {#if result}
@@ -63,7 +62,6 @@
       {/if}
     </div>
 
-    <!-- Grade table -->
     <div class="overflow-x-auto">
       <table class="w-full text-sm border-collapse">
         <thead>
@@ -81,7 +79,7 @@
           {/each}
           <tr class="bg-amber-50 text-amber-800">
             <td class="p-2 border border-slate-200 font-semibold whitespace-nowrap">IM / VL</td>
-            <td class="p-2 border border-slate-200 font-mono text-xs">Special or Ultra (Arborite)</td>
+            <td class="p-2 border border-slate-200 font-mono text-xs">Special or Ultra (Arborite) — ambiguous</td>
           </tr>
         </tbody>
       </table>

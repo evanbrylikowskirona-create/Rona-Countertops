@@ -98,9 +98,9 @@
     </div>
     <div class="p-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
       <div>
-        <!-- svelte-ignore a11y_label_has_associated_control -->
-        <label class="block text-sm font-medium text-slate-700 mb-1">Products multiplier (×)</label>
+        <label for="margin-products" class="block text-sm font-medium text-slate-700 mb-1">Products multiplier (×)</label>
         <input
+          id="margin-products"
           type="number" step="0.01" min="1"
           bind:value={settings.marginProducts}
           class="w-full px-3 py-2 border border-slate-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-900"
@@ -108,9 +108,9 @@
         <p class="text-xs text-slate-400 mt-1">Default: 1.99 (≈ 100% markup)</p>
       </div>
       <div>
-        <!-- svelte-ignore a11y_label_has_associated_control -->
-        <label class="block text-sm font-medium text-slate-700 mb-1">Add-ons multiplier (×)</label>
+        <label for="margin-addons" class="block text-sm font-medium text-slate-700 mb-1">Add-ons multiplier (×)</label>
         <input
+          id="margin-addons"
           type="number" step="0.01" min="1"
           bind:value={settings.marginAddons}
           class="w-full px-3 py-2 border border-slate-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-900"

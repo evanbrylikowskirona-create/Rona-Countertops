@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@layer base {
+  button {
+    cursor: pointer;
+  }
+}
+
+/* Toast animations */
+@keyframes slideInToast {
+  from { transform: translateX(110%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+@keyframes fadeOutToast {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(110%); }
+}
+
+.toast-enter { animation: slideInToast 0.25s ease forwards; }
+.toast-leave { animation: fadeOutToast 0.25s ease forwards; }
+
+/* Cut segment hover */
+.cut-segment {
+  transition: filter 0.2s ease;
+}
+.cut-segment:hover {
+  filter: brightness(1.1);
+}
+
+/* Print styles */
+@media print {
+  .no-print { display: none !important; }
+
+  .print-only { display: block !important; }
+
+  .section { display: none !important; }
+
+  .section:has(.pricing-summary),
+  .section.print-show {
+    display: block !important;
+    page-break-inside: avoid;
+    border: 1px solid #e5e7eb;
+    margin-bottom: 10px;
+  }
+
+  @page {
+    margin: 0.5cm;
+    size: auto;
+  }
+}
+
+.print-only { display: none; }
+
+/* Addon disabled state */
+.addon-disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}

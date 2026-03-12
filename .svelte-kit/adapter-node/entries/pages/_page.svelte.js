@@ -1,4 +1,4 @@
-import { s as store_get, c as escape_html, e as ensure_array_like, d as attr, u as unsubscribe_stores, h as bind_props, a as attr_class, b as stringify, i as head } from "../../chunks/index2.js";
+import { s as store_get, c as escape_html, d as attr, b as stringify, e as ensure_array_like, u as unsubscribe_stores, h as bind_props, a as attr_class, i as head } from "../../chunks/index2.js";
 import { s as settingsStore, P as PROFILE_LABELS, q as quoteStore, c as clientMode, C as COLOR_LOOKUP_DATA } from "../../chunks/stores.js";
 function ProductRow($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
@@ -8,9 +8,10 @@ function ProductRow($$renderer, $$props) {
     let index = $$props["index"];
     product.profile || "vanity";
     productKeys = Object.keys(store_get($$store_subs ??= {}, "$settingsStore", settingsStore).pricingData);
-    $$renderer2.push(`<div class="bg-white border border-slate-200 rounded-lg p-3 space-y-3"><div class="flex items-center justify-between"><span class="text-xs font-bold text-slate-500 uppercase tracking-wide">Product #${escape_html(index + 1)}</span> <button class="text-slate-400 hover:text-red-500 transition-colors" title="Remove product"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button></div> <div class="grid grid-cols-2 gap-2 sm:grid-cols-4"><div class="col-span-2 sm:col-span-1"><label class="block text-xs font-medium text-slate-600 mb-1">Product Line</label> `);
+    $$renderer2.push(`<div class="bg-white border border-slate-200 rounded-lg p-3 space-y-3"><div class="flex items-center justify-between"><span class="text-xs font-bold text-slate-500 uppercase tracking-wide">Product #${escape_html(index + 1)}</span> <button class="text-slate-400 hover:text-red-500 transition-colors" title="Remove product"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button></div> <div class="grid grid-cols-2 gap-2 sm:grid-cols-4"><div class="col-span-2 sm:col-span-1"><label${attr("for", `product-line-${stringify(product.id)}`)} class="block text-xs font-medium text-slate-600 mb-1">Product Line</label> `);
     $$renderer2.select(
       {
+        id: `product-line-${stringify(product.id)}`,
         value: product.productKey,
         class: "w-full px-2 py-1.5 text-sm border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-900"
       },
@@ -26,9 +27,10 @@ function ProductRow($$renderer, $$props) {
         $$renderer3.push(`<!--]-->`);
       }
     );
-    $$renderer2.push(`</div> <div><label class="block text-xs font-medium text-slate-600 mb-1">Finish Grade</label> `);
+    $$renderer2.push(`</div> <div><label${attr("for", `grade-${stringify(product.id)}`)} class="block text-xs font-medium text-slate-600 mb-1">Finish Grade</label> `);
     $$renderer2.select(
       {
+        id: `grade-${stringify(product.id)}`,
         value: product.grade,
         class: "w-full px-2 py-1.5 text-sm border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-900"
       },
@@ -44,9 +46,10 @@ function ProductRow($$renderer, $$props) {
         });
       }
     );
-    $$renderer2.push(`</div> <div><label class="block text-xs font-medium text-slate-600 mb-1">Profile</label> `);
+    $$renderer2.push(`</div> <div><label${attr("for", `profile-${stringify(product.id)}`)} class="block text-xs font-medium text-slate-600 mb-1">Profile</label> `);
     $$renderer2.select(
       {
+        id: `profile-${stringify(product.id)}`,
         value: product.profile,
         class: "w-full px-2 py-1.5 text-sm border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-900"
       },
@@ -62,7 +65,7 @@ function ProductRow($$renderer, $$props) {
         $$renderer3.push(`<!--]-->`);
       }
     );
-    $$renderer2.push(`</div> <div><label class="block text-xs font-medium text-slate-600 mb-1">Linear Feet</label> <input type="number" min="1"${attr("value", product.quantity)} class="w-full px-2 py-1.5 text-sm border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-900 text-center"/></div></div></div>`);
+    $$renderer2.push(`</div> <div><label${attr("for", `qty-${stringify(product.id)}`)} class="block text-xs font-medium text-slate-600 mb-1">Linear Feet</label> <input${attr("id", `qty-${stringify(product.id)}`)} type="number" min="1"${attr("value", product.quantity)} class="w-full px-2 py-1.5 text-sm border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-900 text-center"/></div></div></div>`);
     if ($$store_subs) unsubscribe_stores($$store_subs);
     bind_props($$props, { product, index });
   });
@@ -204,7 +207,7 @@ function PricingSummary($$renderer, $$props) {
 function CustomerForm($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     var $$store_subs;
-    $$renderer2.push(`<div class="section bg-slate-50 p-5 rounded-lg border border-slate-200 no-print"><h3 class="text-base font-semibold text-slate-700 mb-4 pb-2 border-b-2 border-slate-600">Customer Information</h3> <div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div><label class="block text-sm font-medium text-slate-700 mb-1">Customer Name</label> <input type="text" placeholder="Enter customer name"${attr("value", store_get($$store_subs ??= {}, "$quoteStore", quoteStore).customerInfo.name)} class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-900"/></div> <div><label class="block text-sm font-medium text-slate-700 mb-1">Phone Number</label> <input type="tel" placeholder="(705) 555-0100"${attr("value", store_get($$store_subs ??= {}, "$quoteStore", quoteStore).customerInfo.phone)} class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-900"/></div> <div><label class="block text-sm font-medium text-slate-700 mb-1">Email Address</label> <input type="email" placeholder="customer@example.com"${attr("value", store_get($$store_subs ??= {}, "$quoteStore", quoteStore).customerInfo.email)} class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-900"/></div> <div><label class="block text-sm font-medium text-slate-700 mb-1">Address</label> <input type="text" placeholder="123 Main St"${attr("value", store_get($$store_subs ??= {}, "$quoteStore", quoteStore).customerInfo.address)} class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-900"/></div></div></div> <div class="print-only bg-slate-100 p-4 rounded-lg mb-4"><h3 class="text-base font-semibold mb-2">Customer Information</h3> <div class="text-sm leading-relaxed">`);
+    $$renderer2.push(`<div class="section bg-slate-50 p-5 rounded-lg border border-slate-200 no-print"><h3 class="text-base font-semibold text-slate-700 mb-4 pb-2 border-b-2 border-slate-600">Customer Information</h3> <div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div><label for="customer-name" class="block text-sm font-medium text-slate-700 mb-1">Customer Name</label> <input id="customer-name" type="text" placeholder="Enter customer name"${attr("value", store_get($$store_subs ??= {}, "$quoteStore", quoteStore).customerInfo.name)} class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-900"/></div> <div><label for="customer-phone" class="block text-sm font-medium text-slate-700 mb-1">Phone Number</label> <input id="customer-phone" type="tel" placeholder="(705) 555-0100"${attr("value", store_get($$store_subs ??= {}, "$quoteStore", quoteStore).customerInfo.phone)} class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-900"/></div> <div><label for="customer-email" class="block text-sm font-medium text-slate-700 mb-1">Email Address</label> <input id="customer-email" type="email" placeholder="customer@example.com"${attr("value", store_get($$store_subs ??= {}, "$quoteStore", quoteStore).customerInfo.email)} class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-900"/></div> <div><label for="customer-address" class="block text-sm font-medium text-slate-700 mb-1">Address</label> <input id="customer-address" type="text" placeholder="123 Main St"${attr("value", store_get($$store_subs ??= {}, "$quoteStore", quoteStore).customerInfo.address)} class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-900"/></div></div></div> <div class="print-only bg-slate-100 p-4 rounded-lg mb-4"><h3 class="text-base font-semibold mb-2">Customer Information</h3> <div class="text-sm leading-relaxed">`);
     if (store_get($$store_subs ??= {}, "$quoteStore", quoteStore).customerInfo.name) {
       $$renderer2.push("<!--[0-->");
       $$renderer2.push(`<p><strong>Name:</strong> ${escape_html(store_get($$store_subs ??= {}, "$quoteStore", quoteStore).customerInfo.name)}</p>`);
@@ -242,7 +245,7 @@ function GradeReferenceChart($$renderer, $$props) {
     $$renderer2.push(`<div class="section no-print bg-slate-50 p-5 rounded-lg border border-slate-200"><button class="w-full text-left flex items-center justify-between text-base font-semibold text-slate-700 pb-2 border-b-2 border-slate-600 mb-4"><span>Finish Grade Reference Chart</span> <span class="text-slate-500 text-sm">${escape_html("▼")}</span></button> `);
     {
       $$renderer2.push("<!--[0-->");
-      $$renderer2.push(`<div class="bg-white border border-slate-200 rounded-lg p-3 mb-4"><label class="block text-xs font-semibold text-slate-500 tracking-wider mb-2">Look Up Colour Code</label> <div class="flex gap-2 items-center"><input type="text" placeholder="e.g. 38, DI, FXNG, SDU…"${attr("value", query)} class="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-900"/> `);
+      $$renderer2.push(`<div class="bg-white border border-slate-200 rounded-lg p-3 mb-4"><label for="color-lookup" class="block text-xs font-semibold text-slate-500 tracking-wider mb-2">Look Up Colour Code</label> <div class="flex gap-2 items-center"><input id="color-lookup" type="text" placeholder="e.g. 38, DI, FXNG, SDU…"${attr("value", query)} class="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-900"/> `);
       {
         $$renderer2.push("<!--[-1-->");
       }
@@ -256,7 +259,7 @@ function GradeReferenceChart($$renderer, $$props) {
         let g = each_array[$$index];
         $$renderer2.push(`<tr${attr_class(g.color)}><td class="p-2 border border-slate-200 font-semibold whitespace-nowrap">${escape_html(g.grade)} – ${escape_html(g.label)}</td><td class="p-2 border border-slate-200 font-mono text-xs">${escape_html(g.codes.join(", "))}</td></tr>`);
       }
-      $$renderer2.push(`<!--]--><tr class="bg-amber-50 text-amber-800"><td class="p-2 border border-slate-200 font-semibold whitespace-nowrap">IM / VL</td><td class="p-2 border border-slate-200 font-mono text-xs">Special or Ultra (Arborite)</td></tr></tbody></table></div>`);
+      $$renderer2.push(`<!--]--><tr class="bg-amber-50 text-amber-800"><td class="p-2 border border-slate-200 font-semibold whitespace-nowrap">IM / VL</td><td class="p-2 border border-slate-200 font-mono text-xs">Special or Ultra (Arborite) — ambiguous</td></tr></tbody></table></div>`);
     }
     $$renderer2.push(`<!--]--></div>`);
   });

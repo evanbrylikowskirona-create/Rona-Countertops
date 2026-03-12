@@ -79,7 +79,7 @@
           {/each}
           <tr class="bg-amber-50 text-amber-800">
             <td class="p-2 border border-slate-200 font-semibold whitespace-nowrap">IM / VL</td>
-            <td class="p-2 border border-slate-200 font-mono text-xs">Special or Ultra (Arborite) — ambiguous</td>
+            <td class="p-2 border border-slate-200 font-mono text-xs">Special or Ultra (Arborite)</td>
           </tr>
         </tbody>
       </table>

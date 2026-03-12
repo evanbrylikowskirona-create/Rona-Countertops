@@ -1,4 +1,4 @@
-import { i as head, c as escape_html, d as attr, e as ensure_array_like } from "../../../chunks/index2.js";
+import { i as head, c as escape_html, d as attr, e as ensure_array_like, b as stringify } from "../../../chunks/index2.js";
 import "@sveltejs/kit/internal";
 import "../../../chunks/exports.js";
 import "../../../chunks/utils.js";
@@ -28,7 +28,7 @@ function _page($$renderer, $$props) {
       const each_array = ensure_array_like(cuts);
       for (let i = 0, $$length = each_array.length; i < $$length; i++) {
         let cut = each_array[i];
-        $$renderer2.push(`<div class="flex justify-between items-center bg-slate-50 px-3 py-2 rounded-md border border-slate-200"><span class="font-mono font-medium text-sm">${escape_html(cut)}"</span> <button aria-label="Remove cut" class="text-slate-400 hover:text-red-500 transition-colors ml-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button></div>`);
+        $$renderer2.push(`<div class="flex justify-between items-center bg-slate-50 px-3 py-2 rounded-md border border-slate-200"><span class="font-mono font-medium text-sm">${escape_html(cut)}"</span> <button${attr("aria-label", `Remove ${stringify(cut)} inch cut`)} class="text-slate-400 hover:text-red-500 transition-colors ml-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button></div>`);
       }
       $$renderer2.push(`<!--]--></div></div>`);
     } else {

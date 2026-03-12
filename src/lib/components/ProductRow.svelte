@@ -16,10 +16,6 @@
 
   $: productKeys = Object.keys($settingsStore.pricingData);
 
-  // local state for the select
-  let selectedProfile: ProfileType = product.profile || 'vanity';
-
-  
 </script>
 
 <div class="bg-white border border-slate-200 rounded-lg p-3 space-y-3">

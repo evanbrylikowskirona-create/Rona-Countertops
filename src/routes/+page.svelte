@@ -16,7 +16,7 @@
       id: productIdCounter++,
       productKey: keys[0] ?? '2300_2700_Nova',
       grade: 'regular',
-      profile: 'bar36',
+      profile: 'vanity',
       quantity: 1
     });
     unsaved.set(true);
